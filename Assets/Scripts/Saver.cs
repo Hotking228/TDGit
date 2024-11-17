@@ -21,6 +21,7 @@ public class Saver<T>
     {
 
         var wrapper = new Saver<T> { data = completionData };
+       
         var dataString = JsonUtility.ToJson(wrapper);
         File.WriteAllText(FileHandler.Path(fileName), dataString);
     }

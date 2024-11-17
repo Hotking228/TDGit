@@ -61,12 +61,13 @@ namespace SpaceShooter
         /// </summary>
         public void Fire(Transform target)
         {
+
             if (m_RefireTimer > 0)
                 return;
 
             if (m_TurretProperties == null)
                 return;
-
+            Sound.Arrow.Play();
 
             if(m_Ship)
             {

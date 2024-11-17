@@ -139,7 +139,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2449305777011994520}
   - component: {fileID: 8179411381852155516}
-  - component: {fileID: 8345627027596217885}
+  - component: {fileID: 1167107811485109253}
+  - component: {fileID: 8449387831483275375}
   m_Layer: 0
   m_Name: Player Camp
   m_TagString: Untagged
@@ -178,11 +179,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DoNotDestroyOnLoad: 0
   m_NumLives: 10
+  indestructible: 0
   m_Ship: {fileID: 0}
   m_PlayerShipPrefab: {fileID: 0}
-  m_Gold: 30
+  healthUpgrade: {fileID: 11400000, guid: 12837f3089f84c14c81ce28eafa1d022, type: 2}
+  m_Gold: 45
   m_TowerPrefab: {fileID: 1848475130017425625, guid: 4de4f8e271c65214ba4d964ff8979e22, type: 3}
---- !u!114 &8345627027596217885
+--- !u!114 &1167107811485109253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +194,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8553120410122783599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c9251484f954fe4cb28311cc8d9e2af, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0bb724e2ed7e145804a31d7e573d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_DoNotDestroyOnLoad: 0
+  m_ReferenceTime: 21
+  m_EventLevelCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8449387831483275375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553120410122783599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6649b3f4c95a44744b07c580b2703aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

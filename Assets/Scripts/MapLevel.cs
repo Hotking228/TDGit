@@ -3,20 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using SpaceShooter;
 using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class MapLevel : MonoBehaviour
 {
-    private Episode episode;
-    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField]private Episode episode;
+    public Episode Ep => episode;
+    public bool IsComplete { get { return gameObject.activeSelf &&  resultPanel.gameObject.activeSelf; } }
 
+
+    [SerializeField] private RectTransform resultPanel;
+    [SerializeField] private Image[] resultImages;
     public void LoadLevel()
     {
+        Debug.Log("Click");
         if (episode != null)
         LevelSequenceController.Instance.StartEpisode(episode);
     }
-    public void SetLevelData(Episode episode, int score)
+
+
+    public void Initialise()
     {
-        this.episode = episode;
-        text.text = $"{score}/3";
+        var score = MapCompletion.Instance.GetEpisodeScore(episode);
+        resultPanel.gameObject.SetActive(score > 0);
+        for (int i = 0; i < score; i++)
+        {
+            resultImages[i].color = Color.white;
+        }
     }
 }

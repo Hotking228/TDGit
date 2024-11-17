@@ -5,6 +5,13 @@ using SpaceShooter;
 using System;
 public class TDPlayer : Player
 {
+    [SerializeField] private UpgradeAsset healthUpgrade;
+    private new void Awake()
+    {
+        base.Awake();
+        int level = Upgrades.GetUpgradeLevel(healthUpgrade);
+        TakeDamage(-level * 5);
+    }
     public static new TDPlayer Instance {get{ return (Player.Instance as TDPlayer);} }
     public static void GoldUpdateSubscribe(Action<int> act)
     {
@@ -20,7 +27,7 @@ public class TDPlayer : Player
     }
 
     private static event Action<int> OnGoldUpdate;
-    private static event Action<int> OnLifeUpdate;
+    public static event Action<int> OnLifeUpdate;
 
 
     [SerializeField] private int m_Gold = 0;

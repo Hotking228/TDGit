@@ -14,6 +14,8 @@ public sealed class EnemyAsset : ScriptableObject
     [Header("Params")]
     public float moveSpeed = 1;
     public int hp = 1;
+    public int armor = 0;
+    public Enemy.ArmorType armorType;
     public int score = 1;
     public float radius;
     public int damage = 1;

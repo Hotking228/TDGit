@@ -16,7 +16,9 @@ MonoBehaviour:
   spriteScale: {x: 0.5, y: 0.5}
   animations: {fileID: 9100000, guid: eb15abfa7b328ca4583fec4c13e7dea1, type: 2}
   moveSpeed: 2
-  hp: 20
+  hp: 3
+  armor: 1
+  armorType: 0
   score: 10
   radius: 0.23
   damage: 1

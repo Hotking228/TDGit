@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3183016032860427994}
-  - component: {fileID: 7048164627361517394}
+  - component: {fileID: -3023984052416825472}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -117,7 +117,7 @@ Transform:
   - {fileID: 8975607366752940612}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7048164627361517394
+--- !u!114 &-3023984052416825472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,14 +126,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7405844408935229819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c8c7bee85a8fb94eb37b08ecc1f8db7, type: 3}
+  m_Script: {fileID: 11500000, guid: 263de86404fe4d34e9d2fdaf44580fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Nickname: 
   damageMode: 1
-  m_AnimTransition: collide
-  m_Animator: {fileID: 0}
+  followMode: 0
   m_Velocity: 10
   m_Lifetime: 10
-  m_Damage: 10
+  m_Damage: 3
+  addDamage: 0
   m_ImpactEffectPrefab: {fileID: 0}
+  upgradeAsset: {fileID: 11400000, guid: e76fc9ae175ff0a409295b2e5db44d1c, type: 2}

@@ -1,0 +1,53 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="Abilities">
+			<method name="UseFireAbility"/>
+			<method name="UseFireAbility"/>
+			<method name="UseTimeAbility"/>
+			<method name="UseTimeAbility"/>
+		</type>
+		<type fullname="BuyUpgrade">
+			<method name="Buy"/>
+			<method name="Buy"/>
+			<method name="Buy"/>
+			<method name="Buy"/>
+			<method name="Buy"/>
+			<method name="Buy"/>
+		</type>
+		<type fullname="Enemy">
+			<method name="DamagePlayer"/>
+			<method name="DamagePlayer"/>
+			<method name="GivePlayerGold"/>
+			<method name="GivePlayerGold"/>
+		</type>
+		<type fullname="MainMenu">
+			<method name="Continue"/>
+			<method name="NewGame"/>
+			<method name="Quit"/>
+		</type>
+		<type fullname="MapLevel">
+			<method name="LoadLevel"/>
+			<method name="LoadLevel"/>
+			<method name="LoadLevel"/>
+			<method name="LoadLevel"/>
+		</type>
+		<type fullname="SpaceShooter.LevelResultController">
+			<method name="OnPlayNext"/>
+			<method name="OnPlayNext"/>
+			<method name="OnPlayNext"/>
+			<method name="OnPlayNext"/>
+		</type>
+		<type fullname="UIIndestructibleCamp">
+			<method name="TryMakeIndestructible"/>
+			<method name="TryMakeIndestructible"/>
+		</type>
+		<type fullname="UINextWave">
+			<method name="CallWave"/>
+			<method name="CallWave"/>
+		</type>
+		<type fullname="UITowerBuyControl">
+			<method name="Buy"/>
+			<method name="Buy"/>
+		</type>
+	</assembly>
+</linker>

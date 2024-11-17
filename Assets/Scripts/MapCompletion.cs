@@ -18,27 +18,21 @@ public class MapCompletion : MonoSingleton<MapCompletion>
     }
     public static void SaveEpisodeResult(int levelScore)
     {
-        Instance.SaveResult(LevelSequenceController.Instance.CurrentEpisode, levelScore);
+        if(Instance)
+            Instance.SaveResult(LevelSequenceController.Instance.CurrentEpisode, levelScore);
     }
 
     [SerializeField] private EpisodeScore[] completionData;
+    [SerializeField] private int totalScore;
+    public int TotalScore { get { return totalScore; } }
     private new void Awake()
     {
         base.Awake();
         Saver<EpisodeScore[]>.TryLoad(fileName, ref completionData);
-
-    }
-    public bool TryIndex(int id, out Episode episode, out int score)
-    {
-        if (id >= 0 && id < completionData.Length)
+        foreach (var episodeScore in completionData)
         {
-            episode = completionData[id].episode;
-            score = completionData[id].score;
-            return true;
+            totalScore += episodeScore.score;
         }
-        episode = null;
-        score = 0;
-        return false;
     }
     private void SaveResult(Episode currentEpisode, int levelScore)
     {
@@ -48,11 +42,24 @@ public class MapCompletion : MonoSingleton<MapCompletion>
             {
                 if (levelScore > item.score)
                 {
+                    totalScore += levelScore - item.score;
                     item.score = levelScore;
                     Saver<EpisodeScore[]>.Save(fileName, completionData);
                 }
 
             }
         }
+    }
+
+    public int GetEpisodeScore(Episode episode)
+    {
+        foreach (var data in completionData)
+        {
+            if (data.episode == episode)
+            {
+                return data.score;
+            }
+        }
+        return 0;
     }
 }

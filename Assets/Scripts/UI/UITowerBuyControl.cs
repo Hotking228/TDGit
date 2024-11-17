@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 public class UITowerBuyControl : MonoBehaviour
 {
+    public void SetTowerAsset(TowerAsset asset)
+    {
+        m_TowerAsset = asset;
+    }
+
+
     [SerializeField] private TextMeshProUGUI m_Text;
     [SerializeField] private Button m_Button;
     [SerializeField] private Transform m_BuildSite;
@@ -37,6 +43,7 @@ public class UITowerBuyControl : MonoBehaviour
 
     public void Buy()
     {
+        Sound.Build.Play();
         TDPlayer.Instance.TryBuild(m_TowerAsset, m_BuildSite);
         BuildSite.HideControls();
     }

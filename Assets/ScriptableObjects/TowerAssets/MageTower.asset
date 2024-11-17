@@ -17,3 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 298636722737c4b41816506cd4bc994f, type: 3}
   radius: 4.5
   turretAsset: {fileID: 11400000, guid: 5932635a6d70f5f48855120b73e65302, type: 2}
+  requiredUpgrade: {fileID: 11400000, guid: dc2d33585999e7c47842a18ca08f763e, type: 2}
+  requiredUpgradeLevel: 1
+  m_UpgradesTo:
+  - {fileID: 0}

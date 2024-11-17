@@ -10,6 +10,7 @@ namespace SpaceShooter
     /// </summary>
     public class Projectile : Entity
     {
+        protected int addDamageUpgrade;
         public enum FollowEnemyMode
         {
             None,
@@ -23,8 +24,8 @@ namespace SpaceShooter
         }
         [SerializeField] private DamageMode damageMode = DamageMode.Single;
         [SerializeField] private FollowEnemyMode followMode = FollowEnemyMode.None;
-        [SerializeField] private string m_AnimTransition = "collide";
-        [SerializeField] private Animator m_Animator;
+
+
 
         private Transform target;
         public Transform Target { set { target = value; } }
@@ -41,17 +42,18 @@ namespace SpaceShooter
         /// <summary>
         /// Повреждения наносимые снарядом.
         /// </summary>
-        [SerializeField] private int m_Damage;
-        [SerializeField] private float addDamage = 0;
+        [SerializeField] protected int m_Damage;
+        [SerializeField] protected float addDamage = 0;
 
         /// <summary>
         /// Эффект попадания от что то твердое. 
         /// </summary>
         [SerializeField] private ImpactEffect m_ImpactEffectPrefab;
-
+        [SerializeField] private UpgradeAsset upgradeAsset;
         private float m_Timer;
         private void Start()
         {
+            addDamageUpgrade = Upgrades.GetUpgradeLevel(upgradeAsset) * 2;
             PowerUpTowers[] powerups = FindObjectsByType<PowerUpTowers>(FindObjectsSortMode.None);
             for (int i = 0; i < powerups.Length; i++)
             {
@@ -96,16 +98,28 @@ namespace SpaceShooter
             if (followMode == FollowEnemyMode.follow && target != null)
                 transform.up = (target.position - transform.position).normalized;
         }
-
+        /*
         private void OnHit(RaycastHit2D hit)
+        {
+            var enemy = hit.collider.transform.root.GetComponent<Enemy>();
+
+            if (enemy != null && enemy != m_Parent)
+            {
+                if (m_Animator != null)
+                    m_Animator.SetBool(m_AnimTransition, true);
+                enemy.TakeDamage(m_Damage + (int)addDamage + addDamageUpgrade);
+
+               
+            }
+        }
+        */
+        protected virtual void OnHit(RaycastHit2D hit)
         {
             var destructible = hit.collider.transform.root.GetComponent<Destructible>();
 
             if (destructible != null && destructible != m_Parent)
             {
-                if (m_Animator != null)
-                    m_Animator.SetBool(m_AnimTransition, true);
-                destructible.ApplyDamage(m_Damage + (int)addDamage);
+                destructible.ApplyDamage(m_Damage + (int)addDamage + addDamageUpgrade);
 
                 // #Score
                 // добавляем очки за уничтожение
@@ -124,6 +138,7 @@ namespace SpaceShooter
 
             
         }
+        
 
         private void OnProjectileLifeEnd(Collider2D collider, Vector2 pos)
         {
@@ -137,7 +152,7 @@ namespace SpaceShooter
         }
 
 
-        private Destructible m_Parent;
+        protected Destructible m_Parent;
 
         public void SetParentShooter(Destructible parent)
         {

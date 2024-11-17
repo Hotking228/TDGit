@@ -31,8 +31,8 @@ namespace SpaceShooter
         /// <summary>
         /// Время прохождения в секундах за которое будут начисляться очки.
         /// </summary>
-        [SerializeField] private int m_ReferenceTime;
-        public int ReferenceTime => m_ReferenceTime;
+        [SerializeField] protected float m_ReferenceTime;
+        public float ReferenceTime => m_ReferenceTime;
 
         /// <summary>
         /// Событие которое будет вызвано когда уровень будет выполнен. Вызывается один раз.
@@ -61,7 +61,7 @@ namespace SpaceShooter
             if (!m_IsLevelCompleted)
             {
                 m_LevelTime += Time.deltaTime;
-
+               
                 CheckLevelConditions();
             }
 
@@ -77,7 +77,7 @@ namespace SpaceShooter
         {
             if (m_Conditions == null || m_Conditions.Length == 0)
                 return;
-
+            
             int numCompleted = 0;
 
             foreach(var v in m_Conditions)
@@ -88,10 +88,12 @@ namespace SpaceShooter
 
             if(numCompleted == m_Conditions.Length)
             {
+               
                 m_IsLevelCompleted = true;
                 m_EventLevelCompleted?.Invoke();
 
                 // Notify level sequence Unit3 code
+                
                 LevelSequenceController.Instance?.FinishCurrentLevel(true);
             }
         }

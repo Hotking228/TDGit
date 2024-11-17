@@ -6,12 +6,16 @@ using UnityEngine.EventSystems;
 
 public class BuildSite : MonoBehaviour, IPointerDownHandler
 {
-    public static event Action<Transform> OnClickEvent;
+    public static event Action<BuildSite> OnClickEvent;
+    [SerializeField] private TowerAsset[] m_BuildableTowers; 
+    public TowerAsset[] BuildableTowers { get { return m_BuildableTowers; } }
+
+    
 
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        OnClickEvent(transform.root);
+        OnClickEvent(this);
     }
 
     public static void HideControls()

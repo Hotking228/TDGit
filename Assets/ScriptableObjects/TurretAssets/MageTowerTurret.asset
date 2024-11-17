@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MageTowerTurret
   m_EditorClassIdentifier: 
   m_Mode: 0
-  m_ProjectilePrefab: {fileID: 4687384054373910636, guid: 688d3ada76cb0f843a67b3ecf9b3686c, type: 3}
+  m_ProjectilePrefab: {fileID: 6917445333341545300, guid: 688d3ada76cb0f843a67b3ecf9b3686c, type: 3}
   m_RateOfFire: 1
   m_EnergyUsage: 0
   m_AmmoUsage: 0
